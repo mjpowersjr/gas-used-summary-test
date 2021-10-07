@@ -35,7 +35,7 @@ async function main(args: string[]) {
 
     const gasEstimate = traceResponse.trace
         .reduce((currentGasUsed: BigNumber, step: any) => {
-            //console.log(step);
+            console.log(step);
 
             const additionalGasUsed = step.result
                 ? BigNumber.from(step.result.gasUsed)
@@ -47,9 +47,9 @@ async function main(args: string[]) {
 
 
     console.table({
-        txnHash,
-        gasUsed: txnReceipt.gasUsed.toString(),
-        gasEstimate: gasEstimate.toString(),
+        'Transaction': txnHash,
+        'Gas Used - Receipt': txnReceipt.gasUsed.toString(),
+        'Gas Used - Trace': gasEstimate.toString(),
     })
 }
 
